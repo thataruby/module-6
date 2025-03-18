@@ -11,3 +11,6 @@ In this milestone, I learned how to handle different types of HTTP requests by c
 
 ## Commit 4 Reflection
 This milestone showed how a single-threaded server struggles when handling multiple requests, especially when one request takes a long time to process. Since the server processes requests sequentially, any slow response (like the /sleep request) blocks other incoming requests, causing delays for all users.
+
+## Commit 5 Reflection
+In this milestone, the server was improved by implementing ThreadPool, which now allows it to handle multiple requests concurrently instead of processing them one by one. This prevents slow requests (like /sleep) from blocking the entire server, making it more efficient. The ThreadPool has a set number of worker threads that take turns handling requests, making the server run more smoothly even under hevaly load.
