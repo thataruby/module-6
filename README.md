@@ -8,3 +8,6 @@ In this milestone, the handle_connection method is modified to return an HTML re
 ## Commit 3 Reflection
 In this milestone, I learned how to handle different types of HTTP requests by checking the request line and returning either the requested HTML page or a 404 error. The refactoring step was important because it reduced repetition in the code by separating the response status and filename logic, making it easier to update or extend in the future.
 ![Commit 3 screen capture](/assets/images/commit3.png)
+
+## Commit 4 Reflection
+This milestone showed how a single-threaded server struggles when handling multiple requests, especially when one request takes a long time to process. Since the server processes requests sequentially, any slow response (like the /sleep request) blocks other incoming requests, causing delays for all users.
