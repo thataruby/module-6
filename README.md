@@ -14,3 +14,6 @@ This milestone showed how a single-threaded server struggles when handling multi
 
 ## Commit 5 Reflection
 In this milestone, the server was improved by implementing ThreadPool, which now allows it to handle multiple requests concurrently instead of processing them one by one. This prevents slow requests (like /sleep) from blocking the entire server, making it more efficient. The ThreadPool has a set number of worker threads that take turns handling requests, making the server run more smoothly even under hevaly load.
+
+## Bonus Reflection
+I replaced the new function with a build function that returns a Result<ThreadPool, PoolCreationError> instead of panicking when given an invalid size. This approach improves error handling by allowing the program to gracefully handle failures instead of abruptly terminating. Using .expect("Error: failed to create thread pool") ensures that if thread pool creation fails, a clear error message is displayed, making debugging easier.

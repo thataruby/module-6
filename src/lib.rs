@@ -2,6 +2,9 @@ use std::{
     sync::{mpsc, Arc, Mutex},
     thread,
 };
+
+pub struct PoolCreationError;
+
 pub struct ThreadPool {
     workers: Vec<Worker>,
     sender: mpsc::Sender<Job>,
@@ -13,11 +16,11 @@ impl ThreadPool {
     /// The size is the number of threads in the pool.
     ///
     /// # Panics
-    ///
-    /// The `new` function will panic if the size is zero.
-
-    pub fn new(size: usize) -> ThreadPool {
-        assert!(size > 0);
+    
+    pub fn build(size: usize) -> Result<ThreadPool, PoolCreationError> {
+        if size == 0 {
+            return Err(PoolCreationError);
+        }
 
         let (sender, receiver) = mpsc::channel();
 
